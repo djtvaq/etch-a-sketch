@@ -7,12 +7,22 @@ newDiv.classList.add('gridSquare')
 
 
 function gridSquareMouseOver() {
-    this.classList.add('gridSquareHover')
+    this.setAttribute('style', `
+    transition: 0s;
+    background-color: rgb(${Math.floor((Math.random() * 255) + 1)},${Math.floor((Math.random() * 255) + 1)},${Math.floor((Math.random() * 255) + 1)},100)
+    `)
 }
 
 function gridSquareMouseOut() {
-    this.classList.add('gridSquareReset')
-    this.classList.remove('gridSquareHover')
+    this.removeAttribute('style')
+    this.setAttribute('style', `transition: 0.5s;
+    transition-delay: 5s;
+    background-color: rgb(0, 0, 0, 0);')`
+    )
+
+
+    // this.classList.add('gridSquareReset')
+    // //this.classList.remove('gridSquareHover')
 }
 
 function newGrid() {
