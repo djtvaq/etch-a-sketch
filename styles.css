@@ -52,10 +52,10 @@ table {
 
 
 .container {
-    width: 640px;
+    width: 960px;
+    height: 960px;
+
     display: grid;
-    grid-template-columns: repeat(16, 40px);
-    grid-auto-rows: 40px;
     margin: auto;
 
 }
