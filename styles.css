@@ -63,3 +63,15 @@ table {
 .gridSquare {
 border: 1px black solid;
 }
+
+.gridSquareHover {
+    transition:0s;
+
+    background-color: black;
+}
+
+.gridSquareReset {
+    transition: 0.5s;
+    transition-delay:3s;
+    background-color: rgb(0,0,0,0);
+}
