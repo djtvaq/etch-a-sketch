@@ -1,25 +1,53 @@
 const container = document.querySelector('.container')
 const newDiv = document.createElement('div')
+const button = document.querySelector('.button')
 
 newDiv.classList.add('gridSquare')
 
-for (let i = 0; i < 256; i++) {
-    container.appendChild(newDiv.cloneNode(true))
-}
+
 
 function gridSquareMouseOver() {
     this.classList.add('gridSquareHover')
 }
 
-function gridSquareMouseOut(){
+function gridSquareMouseOut() {
     this.classList.add('gridSquareReset')
     this.classList.remove('gridSquareHover')
 }
 
-const gridSquare = document.querySelectorAll('.gridSquare')
-gridSquare.forEach(square => square.addEventListener('mouseover', gridSquareMouseOver))
+function newGrid() {
+    document.querySelectorAll('.gridSquare').forEach(e => e.remove())
+    let newGridWidth = prompt('How many squares per side of your new grid?')
+    let newGridWidthInt = parseInt(newGridWidth)
 
-gridSquare.forEach(square => square.addEventListener('mouseout', gridSquareMouseOut))
+
+    let newGridTotalSquares = newGridWidthInt * newGridWidthInt
+
+    for (let i = 0; i < newGridTotalSquares; i++) {
+        container.appendChild(newDiv.cloneNode(true))
+    }
+
+    container.setAttribute('style',
+        `grid-template-columns: repeat(${newGridWidthInt}, 1fr);
+            grid-template-rows: repeat(${newGridWidthInt}, 1fr);`)
+
+    const gridSquare = document.querySelectorAll('.gridSquare')
+    gridSquare.forEach(square => square.addEventListener('mouseover', gridSquareMouseOver))
+
+    gridSquare.forEach(square => square.addEventListener('mouseout', gridSquareMouseOut))
+}
+
+button.addEventListener('click', newGrid)
+
+
+
+
+
+
+
+
+
+
 
 
 
