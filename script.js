@@ -21,15 +21,39 @@ function newGrid() {
     let newGridWidthInt = parseInt(newGridWidth)
 
 
-    let newGridTotalSquares = newGridWidthInt * newGridWidthInt
+    if (newGridWidthInt >= 100) {
+        let newGridWidthInt = 100;
+        let newGridTotalSquares = newGridWidthInt * newGridWidthInt
+        for (let i = 0; i < newGridTotalSquares; i++) {
+            container.appendChild(newDiv.cloneNode(true))
+        }
+        container.setAttribute('style',
+            `grid-template-columns: repeat(${newGridWidthInt}, 1fr);
+            grid-template-rows: repeat(${newGridWidthInt}, 1fr);`)
 
-    for (let i = 0; i < newGridTotalSquares; i++) {
-        container.appendChild(newDiv.cloneNode(true))
+    } else if (newGridWidthInt <= 1) {
+        let newGridWidthInt = 2;
+        let newGridTotalSquares = newGridWidthInt * newGridWidthInt
+        for (let i = 0; i < newGridTotalSquares; i++) {
+            container.appendChild(newDiv.cloneNode(true))
+        }
+        container.setAttribute('style',
+            `grid-template-columns: repeat(${newGridWidthInt}, 1fr);
+            grid-template-rows: repeat(${newGridWidthInt}, 1fr);`)
+
+    } else {
+        let newGridTotalSquares = newGridWidthInt * newGridWidthInt
+        for (let i = 0; i < newGridTotalSquares; i++) {
+            container.appendChild(newDiv.cloneNode(true))
+        }
+
+        container.setAttribute('style',
+            `grid-template-columns: repeat(${newGridWidthInt}, 1fr);
+            grid-template-rows: repeat(${newGridWidthInt}, 1fr);`)
     }
 
-    container.setAttribute('style',
-        `grid-template-columns: repeat(${newGridWidthInt}, 1fr);
-            grid-template-rows: repeat(${newGridWidthInt}, 1fr);`)
+
+
 
     const gridSquare = document.querySelectorAll('.gridSquare')
     gridSquare.forEach(square => square.addEventListener('mouseover', gridSquareMouseOver))
